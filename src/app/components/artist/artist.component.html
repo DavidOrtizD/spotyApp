@@ -1,0 +1,43 @@
+<app-loading *ngIf="!artistIsLoaded"></app-loading>
+<app-error-message *ngIf="errorHappened" [errorMsg] = "componentErrorMsg"></app-error-message>
+<div class="container-fluid mt-4 text-light" *ngIf="artistIsLoaded">
+  <div class="row">
+    <div class="col-lg-2 text-right">
+      <img [src]="artistInfo.images | noImage" class="img-thumbnail img-circle m-3" alt="">
+    </div>
+    <div class="col-lg-6 pt-4">
+      <h2 class="bottom-relative">{{artistInfo.name}}</h2>
+      <p>
+        <a [href]="artistInfo.external_urls.spotify" target="_blank">View Artis Page</a>
+      </p>
+    </div>
+    <div class="col-lg-4 text-center">
+      <button routerLink = "/search" type="button" class="btn btn-danger" name="button">Back</button>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-lg-12">
+      <table class="table text-light">
+        <thead>
+          <tr>
+            <th>Picture</th>
+            <th>Album</th>
+            <th>Song</th>
+            <th>Preview</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="trackInfoIsLoaded">
+          <tr *ngFor="let trackItem of topTracksInfo">
+            <td> <img [src]="trackItem.album.images | noImage" class="img-thumbnail img-circle my-3" alt=""></td>
+            <td>{{trackItem.album.name}}</td>
+            <td>{{trackItem.name}}</td>
+            <td>
+              <iframe [src]="trackItem.uri | secureDom" class="border-0"></iframe>
+              <!--<audio [src]="trackItem.preview_url" controls></audio>-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

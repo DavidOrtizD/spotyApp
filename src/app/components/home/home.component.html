@@ -1,0 +1,17 @@
+<app-loading *ngIf="loading"></app-loading>
+<app-error-message *ngIf="errorLoading" [errorMsg] = "componentErrorMsg"></app-error-message>
+<app-targets [items]="newSongs"></app-targets>
+<!--
+<div class="card-columns">
+  <div class="card" *ngFor="let song of newSongs" >
+    <img [src]="song.images | noImage" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{song.name}}</h5>
+      <span class="badge badge-primary" *ngFor="let artist of song.artists">{{artist.name}}</span>
+      <p class="card-text" >
+        This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+      </p>
+    </div>
+  </div>
+</div>
+-->

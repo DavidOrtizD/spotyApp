@@ -1,0 +1,28 @@
+<div class="card-columns">
+  <div class="card" *ngFor="let item of items">
+    <img [src]="item.images | noImage" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{item.name}}</h5>
+      <div class="row">
+        <div class="col-lg-12" *ngIf="!item.genres">
+          <span class="badge badge-primary pointer" *ngFor="let artist of item.artists" (click) = "viewArtist(artist.id)">{{artist.name}}</span>
+        </div>
+        <div class="col-lg-12" *ngIf="item.genres">
+          <div class="row">
+            <div class="col-lg-12">
+              <span class="badge badge-primary" *ngFor="let genres of item.genres">{{genres}}</span>
+            </div>
+            <div class="col-lg-12 text-center">
+              <button type="button" class="btn btn-info pointer m-2" (click) = "viewArtist(item.id)">View Artist</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-text col-lg-12" *ngIf="item.release_date">
+          <p>
+            Release Date: {{item.release_date}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
